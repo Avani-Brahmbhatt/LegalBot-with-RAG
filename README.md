@@ -30,23 +30,6 @@ LegalBot combines the power of semantic search with large language models to ena
 
 ---
 
-## 📂 File Structure
-
-```
-├── data/                       # Contains raw legal text documents
-├── vectorstore/db_faiss/       # FAISS vector store files
-├── app.py                      # Main FastAPI or Streamlit app (assumed)
-├── llm_connection.py           # Handles LLaMA model setup and querying
-├── vector_db.py                # Embeds documents and manages FAISS index
-├── README.md                   # Project documentation
-├── LICENSE                     # Project license
-├── .gitignore                  # Git ignore file
-├── requirements.txt            # Python dependencies
-
-```
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
@@ -87,6 +70,7 @@ streamlit run app.py
 ## 💬 Sample Query
 
 > **User:** What are the fundamental rights and duties of Indian citizens?
+> 
 > **LegalBot:**"Fundamental rights are six rights guaranteed by the Constitution of India to every Indian citizen. They are:
            - Right to Equality (Article 14-18)
            - Right to Freedom (Article 19-22)
@@ -95,6 +79,6 @@ streamlit run app.py
            - Cultural and Educational Rights (Article 29-30)
            - Right to Constitutional Remedies (Article 32)
 
-           Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
+ Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
 
 ---
