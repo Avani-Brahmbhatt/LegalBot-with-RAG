@@ -78,7 +78,6 @@ streamlit run app.py
            - Right to Freedom of Religion (Article 25-28)
            - Cultural and Educational Rights (Article 29-30)
            - Right to Constitutional Remedies (Article 32)
-
- Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
+>  Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
 
 ---
