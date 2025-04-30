@@ -3,13 +3,15 @@ import streamlit as st
 
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
-
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain_groq import ChatGroq
 
 from dotenv import load_dotenv, find_dotenv
+
 load_dotenv(find_dotenv())
+
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 DB_FAISS_PATH="vectorstore/db_faiss"
 @st.cache_resource
@@ -22,13 +24,11 @@ def set_custom_prompt(custom_prompt_template):
     prompt=PromptTemplate(template=custom_prompt_template, input_variables=["context", "question"])
     return prompt
 
-def load_llm(huggingface_repo_id, HF_TOKEN):
-    llm=HuggingFaceEndpoint(
-        repo_id=huggingface_repo_id,
-        task="text-generation",
-        temperature=0.5,
-        model_kwargs={"token":HF_TOKEN,
-                      "max_length":"512"}
+def load_llm(model_name, temperature):
+    llm=ChatGroq(
+        model_name=model_name,
+        temperature=temperature,
+        max_tokens=2048
     )
     return llm
 
@@ -128,7 +128,7 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
-    st.title("Legal Assistant Chatbot")
+    st.title("Indian Legal Assistant Chatbot")
 
     if 'messages' not in st.session_state:
         st.session_state.messages = []
@@ -136,25 +136,37 @@ def main():
     for message in st.session_state.messages:
         st.chat_message(message['role']).markdown(message['content'])
 
-    prompt=st.chat_input("Enter your query here")
+    prompt=st.chat_input("Enter your legal query here")
 
     if prompt:
         st.chat_message('user').markdown(prompt)
         st.session_state.messages.append({'role':'user', 'content': prompt})
 
         CUSTOM_PROMPT_TEMPLATE = """
-                Use the pieces of information provided in the context to answer user's question.
-                If you dont know the answer, just say that you dont know, dont try to make up an answer. 
-                Dont provide anything out of the given context.
+        As an Indian legal expert, you are specialized ONLY in Indian law and can ONLY assist with legal queries related to Indian citizens or legal issues occurring within India.
 
-                Context: {context}
-                Question: {question}
-
-                Keep you tone warm and welcoming.
-                """
+        First, evaluate whether the query is related to:
+        1. Indian legal matters
+        2. Concerns an Indian citizen
+        3. Involves events occurring within Indian territory
         
-        HUGGINGFACE_REPO_ID="meta-llama/Llama-3.1-8B-Instruct"
-        HF_TOKEN=os.environ.get("HF_TOKEN")
+        If NONE of these criteria are met, respond ONLY with: "I am programmed to provide assistance exclusively on matters concerning Indian law or Indian citizens. Your query appears to involve legal issues outside India's jurisdiction. I recommend consulting a legal professional in the relevant jurisdiction for appropriate guidance."
+        
+        If the query DOES involve Indian legal matters, use the information provided in the context to answer the question:
+        
+        Context: {context}
+        Question: {question}
+        
+        Only provide information supported by the context. If you don't have sufficient information in the context, state: "Based on the available information in my database, I cannot provide a comprehensive answer to this specific Indian legal matter. Please consult a qualified Indian legal professional for personalized advice."
+        
+        When appropriate, reference specific Indian legislation (such as IPC, CrPC, Indian Constitution, etc.) and relevant Indian court judgments.
+        
+        Maintain a professional yet accessible tone, suitable for a legal consultation in India.
+        """
+        
+        # Using Groq's Llama 3 model
+        MODEL_NAME="llama3-70b-8192"
+        TEMPERATURE=0.3
 
         try: 
             vectorstore=get_vectorstore()
@@ -162,7 +174,7 @@ def main():
                 st.error("Failed to load the vector store")
 
             qa_chain=RetrievalQA.from_chain_type(
-                llm=load_llm(huggingface_repo_id=HUGGINGFACE_REPO_ID, HF_TOKEN=HF_TOKEN),
+                llm=load_llm(model_name=MODEL_NAME, temperature=TEMPERATURE),
                 chain_type="stuff",
                 retriever=vectorstore.as_retriever(search_kwargs={'k':3}),
                 return_source_documents=True,

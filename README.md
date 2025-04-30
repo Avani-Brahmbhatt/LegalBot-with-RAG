@@ -1,6 +1,6 @@
 # 🧑‍⚖️ LegalBot with RAG
 
-**LegalBot** is an intelligent legal assistant powered by Retrieval-Augmented Generation (RAG) and Meta's `Llama-3.1-8B-Instruct` model. It is designed to provide accurate, context-aware responses to questions based on Indian legal documents such as statutes, acts, and judgments.
+**LegalBot** is an intelligent legal assistant powered by Retrieval-Augmented Generation (RAG) and Meta's `llama3-70b-8192` model. It is designed to provide accurate, context-aware responses to questions based on Indian legal documents such as statutes, acts, and judgments.
 
 ---
 
@@ -22,7 +22,7 @@ LegalBot combines the power of semantic search with large language models to ena
 
 ## 🛠️ Tech Stack
 
-- **LLM**: `meta-llama/Llama-3.1-8B-Instruct` via HuggingFace
+- **LLM**: `llama3-70b-8192 via Groq API
 - **Vector Store**: FAISS for embedding-based document retrieval
 - **Framework**: LangChain for memory and retrieval chaining
 - **Language**: Python
