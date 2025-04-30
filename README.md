@@ -13,7 +13,7 @@ LegalBot combines the power of semantic search with large language models to ena
 ## 🧠 Key Features
 
 - 🔍 Semantic search across a corpus of Indian legal texts using FAISS
-- 🦙 Contextual understanding with LLaMA 3.1-8B Instruct model
+- 🦙 Contextual understanding with LLaMA model
 - 📚 Flexible and scalable knowledge base for legal documents
 - 💬 Conversational interface with memory-aware responses
 - 🧱 Modular design for easy extension and integration
@@ -22,7 +22,7 @@ LegalBot combines the power of semantic search with large language models to ena
 
 ## 🛠️ Tech Stack
 
-- **LLM**: `llama3-70b-8192 via Groq API
+- **LLM**: `llama3-70b-8192` via Groq API
 - **Vector Store**: FAISS for embedding-based document retrieval
 - **Framework**: LangChain for memory and retrieval chaining
 - **Language**: Python
