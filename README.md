@@ -81,3 +81,6 @@ streamlit run app.py
 >  Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
 
 ---
+![Screenshot 2025-05-01 122411](https://github.com/user-attachments/assets/80a11211-3609-4083-bdc8-cb1205ffec03)
+
+![image](https://github.com/user-attachments/assets/68772002-5448-477d-952c-31ebdef25ddd)
