@@ -70,15 +70,6 @@ streamlit run app.py
 ## 💬 Sample Query
 
 > **User:** What are the fundamental rights and duties of Indian citizens?
-> 
-> **LegalBot:**"Fundamental rights are six rights guaranteed by the Constitution of India to every Indian citizen. They are:
-           - Right to Equality (Article 14-18)
-           - Right to Freedom (Article 19-22)
-           - Right against Exploitation (Article 23-24)
-           - Right to Freedom of Religion (Article 25-28)
-           - Cultural and Educational Rights (Article 29-30)
-           - Right to Constitutional Remedies (Article 32)
->  Fundamental duties, on the other hand, are the duties of every Indian citizen towards the nation. They are listed in Article 51A of the Constitution and include duties such as abiding by the Constitution, respecting the National Flag and Anthem, upholding the sovereignty and integrity of India, defending the country, and promoting harmony and the spirit of common brotherhood."
 
 ---
 ![Screenshot 2025-05-01 122411](https://github.com/user-attachments/assets/80a11211-3609-4083-bdc8-cb1205ffec03)
